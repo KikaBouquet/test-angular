@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { MIN_TEMP_FR, MAX_TEMP_FR } from 'src/app/constants/station-constants';
 import { getKeyByValue, SensorTypeEnum } from '../../enums/sensor-type.enum';
 import { Station } from '../../models/station.model';
 
@@ -29,6 +30,7 @@ export class StationResultComponent implements OnInit {
       }
 
       this.measurementResultsCalculation(filteredMeasurement);
+      this.searchForErrors(filteredMeasurement);
     }
   }
 
@@ -52,13 +54,30 @@ export class StationResultComponent implements OnInit {
         el.value > max ? (max = el.value) : null;
         el.value < min ? (min = el.value) : null;
       });
-
+      const average = sum / element.length;
       this.calculatedResults.push({
         sensorType: getKeyByValue(element[0].sensorType),
         minimum: min,
         maximum: max,
-        average: sum / element.length,
+        average: isNaN(average) ? 0 : average,
       });
+    });
+  }
+
+  searchForErrors(measurements: any) {
+    measurements.forEach((element) => {
+      switch (element.sensorType) {
+        case 'T':
+          element.value > MAX_TEMP_FR ? this.errors++ : null;
+          element.value > MIN_TEMP_FR ? this.errors++ : null;
+          break;
+        case 'H':
+          break;
+        case 'P':
+          break;
+        default:
+          break;
+      }
     });
   }
 }
