@@ -23,39 +23,41 @@ export class StationResultComponent implements OnInit {
 
       let filteredMeasurement = [];
       for (let sensorType of Object.values(SensorTypeEnum)) {
-        console.log(sensorType);
         filteredMeasurement.push(
           measurements.filter((element) => element.sensorType == sensorType)
         );
       }
 
       this.measurementResultsCalculation(filteredMeasurement);
-
-      console.log('filteredMeasurement', filteredMeasurement);
     }
   }
 
   measurementResultsCalculation(measurements: any) {
+    this.calculatedResults = [];
     measurements.forEach((element) => {
       let sum = 0;
       let max = null;
       let min = null;
 
       element.forEach((el) => {
-        sum += el.value;
-        max ? null : el.value;
-        min ? null : el.value;
+        const value = el.value;
+        sum += value;
+        if (!min) {
+          min = value;
+        }
+        if (!max) {
+          max = value;
+        }
 
         el.value > max ? (max = el.value) : null;
         el.value < min ? (min = el.value) : null;
       });
-      const aver = sum / element.length;
 
       this.calculatedResults.push({
         sensorType: getKeyByValue(element[0].sensorType),
         minimum: min,
         maximum: max,
-        average: aver,
+        average: sum / element.length,
       });
     });
   }
