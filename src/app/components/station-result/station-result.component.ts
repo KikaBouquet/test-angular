@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { MIN_TEMP_FR, MAX_TEMP_FR } from '../../constants/station-constants';
+import {
+  MIN_TEMP_FR,
+  MAX_TEMP_FR,
+  MAX_PRESS_FR,
+  MIN_PRESS_FR,
+} from '../../constants/station-constants';
 import { getKeyByValue, SensorTypeEnum } from '../../enums/sensor-type.enum';
 import { Station } from '../../models/station.model';
 
@@ -29,6 +34,7 @@ export class StationResultComponent implements OnInit {
         );
       }
 
+      console.log(filteredMeasurement);
       this.measurementResultsCalculation(filteredMeasurement);
       this.searchForErrors(measurements);
     }
@@ -69,11 +75,14 @@ export class StationResultComponent implements OnInit {
       switch (element.sensorType) {
         case 'T':
           element.value > MAX_TEMP_FR ? this.errors++ : null;
-          element.value > MIN_TEMP_FR ? this.errors++ : null;
+          element.value < MIN_TEMP_FR ? this.errors++ : null;
           break;
         case 'H':
+          // Pas de valeurs min et max trouvées en Fr
           break;
         case 'P':
+          element.value > MAX_PRESS_FR ? this.errors++ : null;
+          element.value < MIN_PRESS_FR ? this.errors++ : null;
           break;
         default:
           break;
