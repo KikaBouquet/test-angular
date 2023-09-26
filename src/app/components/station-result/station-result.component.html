@@ -1,7 +1,18 @@
 <div class="container">
   <strong> Résultats :</strong>
-  <ul>
-    <li>Nombre de stations météo : {{ stationList.length }}</li>
-    <li>Nombre de capteurs en erreur : {{ stationList.length }}</li>
-  </ul>
+  <div>
+    <i>Global</i>
+    <ul>
+      <li>Nombre de stations météo : {{ stationList.length }}</li>
+      <li>Nombre de capteurs en erreur : {{ errors }}</li>
+    </ul>
+  </div>
+  <div *ngFor="let result of calculatedResults">
+    <i>{{ result.sensorType }}</i>
+    <ul>
+      <li>Minimum : {{ result.minimum }}</li>
+      <li>Maximum : {{ result.maximum }}</li>
+      <li>Moyenne : {{ result.average }}</li>
+    </ul>
+  </div>
 </div>

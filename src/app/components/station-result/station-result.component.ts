@@ -12,10 +12,13 @@ import { Station } from '../../models/station.model';
 })
 export class StationResultComponent implements OnInit {
   @Input() stationList: Station[];
+  errors = 0;
+  calculatedResults = [];
 
   ngOnInit() {
     console.log('coucou');
-    if (this.stationList) {
+    if (this.stationList && this.stationList.length > 0) {
+      console.log('coucou');
       const measurements = this.stationList.reduce((acc, element) => {
         return acc.concat(element.measurements);
       }, []);
