@@ -30,7 +30,7 @@ export class StationResultComponent implements OnInit {
       }
 
       this.measurementResultsCalculation(filteredMeasurement);
-      this.searchForErrors(filteredMeasurement);
+      this.searchForErrors(measurements);
     }
   }
 
