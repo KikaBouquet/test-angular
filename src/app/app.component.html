@@ -1,0 +1,17 @@
+<div class="container">
+  <strong>Traitement des données</strong>
+  <div class="input-container">
+    <label>Entrez votre fichier txt ici</label>
+    <input
+      type="file"
+      id="inputFile"
+      accept=".txt"
+      (change)="onFileUpload($event)"
+    />
+  </div>
+</div>
+
+<div *ngIf="stationList">
+  coucou
+  <station-result [stationList]="stationList"></station-result>
+</div>
