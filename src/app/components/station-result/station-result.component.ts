@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { SensorTypeEnum } from 'src/app/enums/sensor-type.enum';
+import { SensorTypeEnum } from '../../enums/sensor-type.enum';
 import { Station } from '../../models/station.model';
 
 @Component({
@@ -14,6 +14,7 @@ export class StationResultComponent implements OnInit {
   @Input() stationList: Station[];
 
   ngOnInit() {
+    console.log('coucou');
     if (this.stationList) {
       const measurements = this.stationList.reduce((acc, element) => {
         return acc.concat(element.measurements);
