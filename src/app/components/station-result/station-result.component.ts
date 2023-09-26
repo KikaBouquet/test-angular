@@ -15,20 +15,16 @@ import { Station } from '../../models/station.model';
   templateUrl: './station-result.component.html',
   styleUrls: ['./station-result.component.css'],
 })
-export class StationResultComponent implements OnInit, OnChanges {
+export class StationResultComponent implements OnInit {
   @Input() stationList: Station[];
 
   ngOnInit() {
     if (this.stationList) {
-      console.log('coucou');
-    }
-  }
+      const measurements = this.stationList.reduce((acc, element) => {
+        return acc.concat(element.measurements);
+      }, []);
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.value && changes.stationList.firstChange) {
-      // Si 'value' a changé pour la première fois,
-      // vous pouvez lancer votre fonction ici.
-      console.log('vc');
+      console.log(measurements);
     }
   }
 }

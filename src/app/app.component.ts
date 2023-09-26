@@ -74,7 +74,6 @@ export class AppComponent {
           if (station) {
             stationList.push(station);
           }
-
           station = new Station();
           station.name = lineSplited[0];
           station.nbOfMeasurement = +lineSplited[1];
