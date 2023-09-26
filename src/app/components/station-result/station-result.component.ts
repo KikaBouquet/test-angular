@@ -1,11 +1,6 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SensorTypeEnum } from 'src/app/enums/sensor-type.enum';
 import { Station } from '../../models/station.model';
 
 @Component({
@@ -24,7 +19,14 @@ export class StationResultComponent implements OnInit {
         return acc.concat(element.measurements);
       }, []);
 
-      console.log(measurements);
+      let filteredMeasurement = [];
+      for (let sensorType of Object.values(SensorTypeEnum)) {
+        filteredMeasurement = measurements.filter(
+          (element) => (element.sensorType = sensorType)
+        );
+      }
+
+      console.log('filteredMeasurement', filteredMeasurement);
     }
   }
 }
