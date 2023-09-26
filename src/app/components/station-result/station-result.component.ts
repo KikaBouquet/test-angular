@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { SensorTypeEnum } from '../../enums/sensor-type.enum';
+import { getKeyByValue, SensorTypeEnum } from '../../enums/sensor-type.enum';
 import { Station } from '../../models/station.model';
 
 @Component({
@@ -16,21 +16,47 @@ export class StationResultComponent implements OnInit {
   calculatedResults = [];
 
   ngOnInit() {
-    console.log('coucou');
     if (this.stationList && this.stationList.length > 0) {
-      console.log('coucou');
       const measurements = this.stationList.reduce((acc, element) => {
         return acc.concat(element.measurements);
       }, []);
 
       let filteredMeasurement = [];
       for (let sensorType of Object.values(SensorTypeEnum)) {
-        filteredMeasurement = measurements.filter(
-          (element) => (element.sensorType = sensorType)
+        console.log(sensorType);
+        filteredMeasurement.push(
+          measurements.filter((element) => element.sensorType == sensorType)
         );
       }
 
+      this.measurementResultsCalculation(filteredMeasurement);
+
       console.log('filteredMeasurement', filteredMeasurement);
     }
+  }
+
+  measurementResultsCalculation(measurements: any) {
+    measurements.forEach((element) => {
+      let sum = 0;
+      let max = null;
+      let min = null;
+
+      element.forEach((el) => {
+        sum += el.value;
+        max ? null : el.value;
+        min ? null : el.value;
+
+        el.value > max ? (max = el.value) : null;
+        el.value < min ? (min = el.value) : null;
+      });
+      const aver = sum / element.length;
+
+      this.calculatedResults.push({
+        sensorType: getKeyByValue(element[0].sensorType),
+        minimum: min,
+        maximum: max,
+        average: aver,
+      });
+    });
   }
 }
