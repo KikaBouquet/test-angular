@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { MIN_TEMP_FR, MAX_TEMP_FR } from 'src/app/constants/station-constants';
+import { MIN_TEMP_FR, MAX_TEMP_FR } from '../../constants/station-constants';
 import { getKeyByValue, SensorTypeEnum } from '../../enums/sensor-type.enum';
 import { Station } from '../../models/station.model';
 
