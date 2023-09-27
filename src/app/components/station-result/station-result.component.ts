@@ -34,7 +34,6 @@ export class StationResultComponent implements OnInit {
         );
       }
 
-      console.log(filteredMeasurement);
       this.measurementResultsCalculation(filteredMeasurement);
       this.searchForErrors(measurements);
     }
