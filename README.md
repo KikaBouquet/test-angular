@@ -39,3 +39,20 @@ Pour exécuter l'application en mode développement, utilisez la commande suivan
 ```bash
 ng serve
 ```
+
+L'application sera accessible à l'adresse http://localhost:4200/. Elle se rechargera automatiquement à chaque modification du code source.
+
+Pour lancer les tests, utilisez la commande suivante :
+
+```bash
+ng test
+```
+
+## Structure du Projet
+
+- src/ : Le code source de l'application Angular.
+- src/app/ : Les composants, services et modules de l'application.
+- src/assets/ : Les fichiers statiques (images, CSS, etc.).
+- angular.json : La configuration d'Angular CLI.
+- package.json : La liste des dépendances et scripts de l'application.
+- README.md : Ce fichier README.
