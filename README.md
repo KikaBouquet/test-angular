@@ -21,3 +21,21 @@ Suivez ces étapes pour installer et exécuter l'application :
    ```bash
    git clone https://github.com/votre-utilisateur/angular-test.git
    ```
+
+2. Accédez au répertoire du projet :
+   ```bash
+   cd angular-test
+   ```
+3. Installez les dépendances nécessaires en utilisant npm :
+
+   ```bash
+   npm install
+   ```
+
+## Utilisation
+
+Pour exécuter l'application en mode développement, utilisez la commande suivante :
+
+```bash
+ng serve
+```
