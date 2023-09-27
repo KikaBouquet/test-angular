@@ -1,8 +1,6 @@
-# test-angular
+# Angular Test (v15)
 
 [Vous pouvez visualiser le projet sur StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-bujvdy)
-
-# Angular Test (Version 15)
 
 Angular Test est une application Angular 15 qui permet d'afficher diverses informations de mesures météorologiques contenues dans un fichier txt.
 
