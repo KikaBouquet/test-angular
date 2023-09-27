@@ -4,7 +4,7 @@
 
 # Angular Test (Version 15)
 
-Angular Test est une application Angular 15 qui permets d'afficher diverses informations de mesures météorologiques contenues dans un fichier txt.
+Angular Test est une application Angular 15 qui permet d'afficher diverses informations de mesures météorologiques contenues dans un fichier txt.
 
 ## Prérequis
 
