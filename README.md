@@ -1,6 +1,6 @@
 # test-angular
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-bujvdy)
+[Vous pouvez visualiser le projet sur StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-bujvdy)
 
 # Angular Test (Version 15)
 
